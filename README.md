@@ -1,5 +1,8 @@
 # Trabajo practico correspondiente al curso Backend/Node.js
 # En el marco del programa Talento Tech BA
+# Profesor: Jean Paul Ferreira
+# Tutora: Sofia Victoria Tarabusi
+# Comisión: 26226
 
 El objetivo es crear un sistema que realice consultas a algún sitio que provea una API de respuesta. En éste caso se utilizará: 
 
