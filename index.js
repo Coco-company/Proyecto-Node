@@ -13,9 +13,11 @@ const request = async (url, options = {}) => {
     return await response.json();
 }
 
-const [resource, id] = ruta.split('/'); //crea const para cada elem
-
 try{
+    if(ruta.includes('/')){
+        const [resource, id] = ruta.split('/'); //crea const para cada elem
+    }
+
     if(metodo == 'GET'){
         if(id){
             const data = await request(`${URL_BASE}/${resource}/${id}`);
@@ -51,5 +53,5 @@ try{
         console.log(`Método "${metodo}" no soportado`);
     }
 }catch(error){
-    console.log("Errorazo:",error.message);
+    console.log("Falla grave:",error.message);
 }
