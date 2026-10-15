@@ -6,7 +6,7 @@
 
 El objetivo es crear un sistema que realice consultas a algún sitio que provea una API de respuesta. En éste caso se utilizará: 
 
-        jsonplaceholder.typicode.com
+        https://dummyjson.com
 
 
 # Formato de comandos
