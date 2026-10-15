@@ -1,4 +1,5 @@
 const [, , metodo, ruta, ...args] = process.argv;
+//console.log("process.argv:");
 //console.log(process.argv);
 
 //const URL_BASE = "https://dummyjson.com";
@@ -13,13 +14,22 @@ const request = async (url, options = {}) => {
     return await response.json();
 }
 
+let resource;
+let id;
+
 try{
-    if(ruta.includes('/')){
-        const [resource, id] = ruta.split('/'); //crea const para cada elem
-    }
 
     if(metodo == 'GET'){
-        if(id){
+
+        if(ruta.includes('/')){ //Si hubiera una barra crea const para cada elem
+            [resource, id] = ruta.split('/'); 
+        }else{
+            resource = ruta; 
+            console.log('resource1:', resource);       
+        }
+
+        console.log('resource2:', resource);       
+        if(ruta.split('/').length>1){
             const data = await request(`${URL_BASE}/${resource}/${id}`);
             console.log(data);
         }else{
