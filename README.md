@@ -8,8 +8,6 @@ El objetivo es crear un sistema que realice consultas a algún sitio que provea 
 
         jsonplaceholder.typicode.com
 
-Dado que tanto "dummyjson.com" como "fakestoreapi.com"
-respondieron un 404 a la solicitud POST
 
 # Formato de comandos
 - Consulta de todos los productos:  npm run start GET users
