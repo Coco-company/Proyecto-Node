@@ -21,14 +21,15 @@ try{
 
     if(metodo == 'GET'){
 
-        if(ruta.includes('/')){ //Si hubiera una barra crea const para cada elem
+        if(args.length > 0){
+            console.log(args);
+            console.error("argumentos no autorizados");
+        }else if(ruta.includes('/')){ //Si hubiera una barra crea const para cada elem
             [resource, id] = ruta.split('/'); 
         }else{
             resource = ruta; 
-            console.log('resource1:', resource);       
         }
 
-        console.log('resource2:', resource);       
         if(ruta.split('/').length>1){
             const data = await request(`${URL_BASE}/${resource}/${id}`);
             console.log(data);
