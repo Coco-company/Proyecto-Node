@@ -25,26 +25,37 @@ try{
             [resource, id] = ruta.split('/'); 
         }
 
-        if(ruta.split('/').length>1){
-            const data = await request(`${URL_BASE}/${resource}/${id}`);
-            console.log(data);
+        if(ruta.split('/').length>1){   //Si es divisible se interpreta 
+            if(resource == "products"){
+                const data = await request(`${URL_BASE}/${resource}/${id}`);
+                console.log(data);
+            }else{
+                console.log(`Resource no soportado ${resource}`);
+            }
         }else{
-            const data = await request(`${URL_BASE}/${resource}`);
-            console.log(data);
+            if(resource == "products"){
+                const data = await request(`${URL_BASE}/${resource}`);
+                console.log(data);
+            }else{
+                console.log(`Resource no soportado ${resource}`);
+            }
         }
     }else if(metodo === "POST"){
-        const [username, email, password] = args;
+        const [title, price, category] = args;
         
-        if(username && email && password){
-            if(email.includes("@")&&email.includes(".")){
-                console.log('resource en request: ',resource);
-                const data = await request(`${URL_BASE}/${resource}/add`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ username, email, password }) 
-                });
-                console.log(`Usuario ${username} creado correctamente`);
-                console.log(`Id asignado ${data.id}`);
+        if(title && price && category){
+            if(price.includes(".")){
+                if(resource == "products"){
+                    const data = await request(`${URL_BASE}/${resource}/add`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ title, price, category }) 
+                    });
+                }else{
+                    console.log(`Resource no soportado ${resource}`);
+                }               
+                console.log(`Producto ${title} creado correctamente`);
+                //console.log(`Id asignado ${data.id}`);
             }else{
                 throw new Error("Email inválido");
             }
@@ -55,9 +66,13 @@ try{
         if(!ruta.includes('/')){
             throw new Error("Recurso invalido");
         }else{
-            [resource, id] = ruta.split('/'); 
-            const data = await request(`${URL_BASE}/${resource}/${id}`, {method: "DELETE"});
-            console.log(`Elemento id: ${id} eliminado`);
+            [resource, id] = ruta.split('/');
+            if(resource == "products"){
+                const data = await request(`${URL_BASE}/${resource}/${id}`, {method: "DELETE"});
+                console.log(`Elemento id: ${id} eliminado`);
+            }else{
+                console.log(`Resource no soportado ${resource}`);
+            }
         }
 
     }else{
