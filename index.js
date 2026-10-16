@@ -57,7 +57,7 @@ try{
                 console.log(`Producto ${title} creado correctamente`);
                 //console.log(`Id asignado ${data.id}`);
             }else{
-                throw new Error("Email inválido");
+                throw new Error("Precio inválido");
             }
         }else{
             throw new Error("faltan parámetros");
